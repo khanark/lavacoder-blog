@@ -1,39 +1,57 @@
 ---
-import Social from "../components/Social.astro";
-
-const platform = "github";
-const username = "khanark";
-
 const socialLinks = [
-  { platform: "Github", username: "khanark" },
-  { platform: "Facebook", username: "BeeAyJee" },
-  { platform: "Instagram", username: "alqahol1c" },
+  {
+    link: "https://www.linkedin.com/in/borislav-godumov-7245b61a2/",
+    icon: "linkedin",
+  },
+  { link: "https://github.com/khanark", icon: "github" },
+  { link: "https://www.facebook.com/BeeAyJee/", icon: "facebook" },
 ];
 ---
 
-<footer>
-  <p>Learn more about my projects on:</p>
-  <ul>
+<footer class="footer">
+  <p>2023 <span>&#169;</span> Borislav Godumov</p>
+  <div class="footer__media-links">
     {
       socialLinks.map((link) => (
-        <li>
-          <Social platform={link.platform} username={link.username} />
-        </li>
+        <a href={link.link} class="link">
+          <i class={`ti ti-brand-${link.icon}`} />
+        </a>
       ))
     }
-  </ul>
+  </div>
 </footer>
 
 <style lang="scss">
-  footer {
-    margin-top: auto;
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    &__media-links {
       display: flex;
       gap: 0.5rem;
+
+      .link {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        padding: 0.25rem;
+        justify-content: center;
+        color: var(--clr-primary);
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: var(--clr-primary);
+          color: #fff;
+        }
+
+        .ti {
+          font-size: 1.5rem;
+          // color: var(--clr-primary);
+        }
+      }
     }
   }
 </style>
