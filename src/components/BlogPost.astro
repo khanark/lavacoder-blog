@@ -48,8 +48,9 @@ const { url, image, title, description, pubDate } = Astro.props;
     gap: 0.75rem;
 
     &__header {
-      width: 70px;
-      height: 70px;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
 
       img {
         width: 100%;
@@ -72,13 +73,31 @@ const { url, image, title, description, pubDate } = Astro.props;
       .description {
         margin: 0;
         color: #888;
+        font-size: 14px;
       }
 
       .date {
-        display: inline-block;
+        display: none;
         margin-left: 1rem;
         color: var(--clr-tertiary);
         font-size: 14px;
+      }
+    }
+
+    @media screen and (min-width: 636px) {
+      &__header {
+        width: 70px;
+        height: 70px;
+      }
+
+      &__content {
+        .date {
+          display: inline-block;
+        }
+
+        .description {
+          font-size: 1rem;
+        }
       }
     }
   }
