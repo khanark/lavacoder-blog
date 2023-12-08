@@ -1,0 +1,79 @@
+---
+import { Image } from "astro:assets";
+// import { formatDate } from "../scripts/utils";
+import { formatDistance } from "date-fns";
+const { url, image, title, description, pubDate } = Astro.props;
+---
+
+<a href={url} class="link">
+  <div class="post">
+    <div class="post__header">
+      <!-- <Image src={image.src} alt={image.alt} /> -->
+      <img src={image.url} alt={image.alt} />
+    </div>
+    <div class="post__content">
+      <div class="content__box-left">
+        <h5 class="title">
+          {title}
+        </h5>
+        <span class="date"
+          >{
+            formatDistance(Date.now(), new Date(pubDate), {
+              includeSeconds: true,
+              addSuffix: true,
+            })
+          }</span
+        >
+      </div>
+      <p class="description">{description}</p>
+    </div>
+  </div>
+</a>
+
+<style lang="scss">
+  .link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .post {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &__header {
+      width: 70px;
+      height: 70px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+
+    &__content {
+      .title {
+        display: inline-block;
+        margin: 0;
+      }
+
+      .description {
+        margin: 0;
+      }
+
+      .date {
+        display: inline-block;
+        margin-left: 1rem;
+        color: #ccc;
+        font-size: 14px;
+      }
+    }
+  }
+</style>

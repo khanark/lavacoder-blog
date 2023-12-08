@@ -1,24 +1,33 @@
 ---
-import Social from "../components/Social.astro"
+import Social from "../components/Social.astro";
 
-const platform = "github"
-const username = "khanark"
+const platform = "github";
+const username = "khanark";
 
 const socialLinks = [
-  {platform: "Github", username: "khanark"},
-  {platform: "Facebook", username: "BeeAyJee"},
-  {platform: "Instagram", username: "alqahol1c"},
-]
+  { platform: "Github", username: "khanark" },
+  { platform: "Facebook", username: "BeeAyJee" },
+  { platform: "Instagram", username: "alqahol1c" },
+];
 ---
+
 <footer>
   <p>Learn more about my projects on:</p>
   <ul>
-    {socialLinks.map(link => <li><Social platform={link.platform} username={link.username}/></li>)}
+    {
+      socialLinks.map((link) => (
+        <li>
+          <Social platform={link.platform} username={link.username} />
+        </li>
+      ))
+    }
   </ul>
 </footer>
 
 <style lang="scss">
   footer {
+    margin-top: auto;
+
     ul {
       list-style: none;
       margin: 0;

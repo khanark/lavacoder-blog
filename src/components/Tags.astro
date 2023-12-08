@@ -1,0 +1,45 @@
+---
+const allPosts = await Astro.glob("../pages/posts/*.md");
+const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+---
+
+<div class="tags">
+  <h5 class="tags__title">Articles by topics</h5>
+  <div class="tags__list">
+    {
+      tags.map((tag) => (
+        <a class="tag" href={`/tags/${tag}`}>
+          {tag}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<style lang="scss">
+  .tags {
+    &__title {
+      margin-top: 0;
+    }
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      .tag {
+        text-decoration: none;
+        padding: 0.25rem 0.75rem;
+        color: var(--clr-primary);
+        border: 1px solid var(--clr-primary);
+        border-radius: 100px;
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: var(--clr-secondary);
+          color: #fff;
+        }
+      }
+    }
+  }
+</style>

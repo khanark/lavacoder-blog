@@ -1,35 +1,35 @@
----
-
----
 <div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about">About Me</a>
-  <a href="/blog">Blog</a>
+  <a href="/about" class="nav-links__link">About Me</a>
+  <a href="/blog" class="nav-links__link blog-link">Blog</a>
 </div>
 
-<!-- <style lang="scss">
-  .site-nav {
+<style lang="scss">
+  .nav-links {
     display: none;
-    margin: 0;
-    padding: 0;
+    gap: 1rem;
 
-    a {
-      color: #333; 
+    &__link {
+      text-decoration: none;
+      color: inherit;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
       font-weight: 500;
-      text-decoration:none;
-      padding: 0.75rem;
-      transition: color 0.2s;
+      transition: all 0.2s ease;
 
       &:hover {
-        background-color: #222;
+        background-color: var(--clr-secondary);
         color: #fff;
+      }
+
+      .blog-link {
+        color: var(--clr-accent);
       }
     }
   }
 
   @media screen and (min-width: 636px) {
-    .site-nav {
-      display: block;
+    .nav-links {
+      display: flex;
     }
   }
-</style> -->
+</style>

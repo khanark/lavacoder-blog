@@ -1,0 +1,14 @@
+---
+const { pageTitle, pageDesc } = Astro.props;
+---
+
+<div class="page-info">
+  <h4>{pageTitle}</h4>
+  <p>{pageDesc}</p>
+</div>
+
+<style lang="scss">
+  .page-info {
+    max-width: calc(70% - 3rem);
+  }
+</style>

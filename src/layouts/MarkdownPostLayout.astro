@@ -1,0 +1,31 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Tags from "../components/Tags.astro";
+const { frontmatter } = Astro.props;
+const { image, title, description, pubDate, author } = frontmatter;
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+  <div class="post">
+    <h3 class="post__title">{title}</h3>
+    <div class="post-img">
+      <img src={image.src} alt={image.alt} />
+    </div>
+    <p><em>{description}</em></p>
+    <p>Published on: {pubDate.slice(0, 10)}</p>
+    <p>Written by {author}</p>
+    <slot />
+  </div>
+  <Tags />
+</BaseLayout>
+
+<style lang="scss">
+  .post {
+    max-width: 80ch;
+    margin: 0 auto;
+
+    &__title {
+      text-align: center;
+    }
+  }
+</style>

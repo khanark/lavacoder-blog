@@ -1,24 +1,36 @@
 ---
-import Navigation from "../components/Navigation.astro"
-import Hambuger from "../components/Hamburger.astro"
+import Navigation from "../components/Navigation.astro";
+import Hambuger from "../components/Hamburger.astro";
 ---
-<header>
-  <h3 class="nav-title">Lavacoder</h3>
+
+<header class="header">
+  <div class="header__logo">
+    <a href="/" class="nav-title text-size-h5">Lavacoder</a>
+  </div>
   <nav>
-    <Hambuger/>
-    <Navigation/>
+    <Hambuger />
+    <Navigation />
   </nav>
 </header>
 
 <style lang="scss">
-  header {
+  .header {
+    min-height: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    &__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
     .nav-title {
-      color: #333;
+      text-decoration: none;
+      color: var(--clr-primary);
       font-weight: bold;
+      margin: 0;
     }
   }
 </style>
