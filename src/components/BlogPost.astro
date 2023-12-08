@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-// import { formatDate } from "../scripts/utils";
+import { Image } from "astro:assets"; // use this later to make the images more performant
 import { formatDistance } from "date-fns";
 const { url, image, title, description, pubDate } = Astro.props;
 ---
@@ -34,14 +33,16 @@ const { url, image, title, description, pubDate } = Astro.props;
   .link {
     text-decoration: none;
     color: inherit;
-    transition: transform 0.2s ease;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
 
     &:hover {
-      transform: scale(1.05);
+      background-color: #ddd;
     }
   }
 
   .post {
+    padding: 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -56,6 +57,10 @@ const { url, image, title, description, pubDate } = Astro.props;
         object-fit: cover;
         border-radius: 50%;
       }
+
+      .post:hover {
+        transform: scale(1.2);
+      }
     }
 
     &__content {
@@ -66,12 +71,13 @@ const { url, image, title, description, pubDate } = Astro.props;
 
       .description {
         margin: 0;
+        color: #888;
       }
 
       .date {
         display: inline-block;
         margin-left: 1rem;
-        color: #ccc;
+        color: var(--clr-tertiary);
         font-size: 14px;
       }
     }

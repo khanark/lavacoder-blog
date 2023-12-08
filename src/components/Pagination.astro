@@ -5,7 +5,7 @@ const { prev, next } = Astro.props;
 <nav aria-label="Blog pages" class="post-nav">
   {
     prev && (
-      <a href={prev} class="post-nav__link">
+      <a href={prev} class="post-nav__link" data-astro-prefetch="tap">
         <i class="ti ti-chevron-left" />
         <span>newest posts</span>
       </a>
@@ -13,7 +13,7 @@ const { prev, next } = Astro.props;
   }
   {
     next && (
-      <a href={next} class="post-nav__link">
+      <a href={next} class="post-nav__link" data-astro-prefetch="tap">
         <span>older posts</span>
         <i class="ti ti-chevron-right" />
       </a>
@@ -24,10 +24,14 @@ const { prev, next } = Astro.props;
 <style lang="scss">
   .post-nav {
     font-weight: bold;
+    display: flex;
+    gap: 1rem;
 
     &__link {
+      display: block;
       text-decoration: none;
       color: var(--clr-primary);
+      padding: 0.25rem 0.75rem;
       display: flex;
       align-items: center;
       gap: 0.25rem;
