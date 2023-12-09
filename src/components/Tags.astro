@@ -19,6 +19,15 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 <style lang="scss">
   .tags {
     grid-row: 3;
+    background: linear-gradient(to bottom, #f2f2f2, transparent);
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 
     &__title {
       margin-top: 0;

@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts.filter((post) =>
-      post.frontmatter.tags.includes(tag)
+      post.frontmatter?.tags.includes(tag)
     );
     return {
       params: { tag },
@@ -22,19 +22,11 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-
-const filteredPosts = posts.filter((post) =>
-  post.frontmatter?.tags.includes(tag)
-);
 ---
 
 <BaseLayout pageTitle={tag}>
   <h1>Posts tagged with {tag}</h1>
   <ul>
-    {
-      filteredPosts.map((post) => (
-        <BlogPost url={post.url} {...post.frontmatter} />
-      ))
-    }
+    {posts.map((post) => <BlogPost url={post.url} {...post.frontmatter} />)}
   </ul>
 </BaseLayout>
