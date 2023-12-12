@@ -1,6 +1,5 @@
 ---
 import '../styles/globals.css';
-import { ViewTransitions } from 'astro:transitions';
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -25,9 +24,8 @@ const { pageTitle } = Astro.props;
       rel="stylesheet"
     />
     <title>{pageTitle}</title>
-    <ViewTransitions />
   </head>
-  <body transition:animate="fade">
+  <body>
     <div class="app">
       <Header />
       <div id="main">

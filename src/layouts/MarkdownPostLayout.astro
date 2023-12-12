@@ -1,7 +1,7 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
-import Tags from "../components/Tags.astro";
-import { format } from "date-fns";
+import BaseLayout from './BaseLayout.astro';
+import Tags from '../components/Tags.astro';
+import { format } from 'date-fns';
 const { frontmatter } = Astro.props;
 const { image, title, description, pubDate } = frontmatter;
 ---
@@ -10,13 +10,13 @@ const { image, title, description, pubDate } = frontmatter;
   <div class="post">
     <h3 class="post__title">{title}</h3>
     <div class="post__img">
-      <img src={image.url} alt={image.alt} transition:persist />
+      <img src={image.url} alt={image.alt} />
     </div>
     <div class="post__info">
       <p class="description"><em>{description}</em></p>
       <p class="date">
         Published on <span class="date__bold"
-          >{format(new Date(pubDate), "dd MMM yyyy")}</span
+          >{format(new Date(pubDate), 'dd MMM yyyy')}</span
         >
       </p>
     </div>
