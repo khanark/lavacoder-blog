@@ -6,7 +6,7 @@ const { url, image, title, description, pubDate } = Astro.props;
 <a href={url} class="link">
   <div class="post">
     <div class="post__header">
-      <img src={image.url} alt={image.alt} />
+      <img src={image.url} alt={image.alt} transition:persist />
     </div>
     <div class="post__content">
       <div class="content__box-left">

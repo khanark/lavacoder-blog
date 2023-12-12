@@ -1,31 +1,70 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import Tags from "../components/Tags.astro";
+import { format } from "date-fns";
 const { frontmatter } = Astro.props;
-const { image, title, description, pubDate, author } = frontmatter;
+const { image, title, description, pubDate } = frontmatter;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
   <div class="post">
     <h3 class="post__title">{title}</h3>
-    <div class="post-img">
-      <img src={image.src} alt={image.alt} />
+    <div class="post__img">
+      <img src={image.url} alt={image.alt} transition:persist />
     </div>
-    <p><em>{description}</em></p>
-    <p>Published on: {pubDate.slice(0, 10)}</p>
-    <p>Written by {author}</p>
-    <slot />
+    <div class="post__info">
+      <p class="description"><em>{description}</em></p>
+      <p class="date">
+        Published on <span class="date__bold"
+          >{format(new Date(pubDate), "dd MMM yyyy")}</span
+        >
+      </p>
+    </div>
+    <div class="post__body">
+      <slot />
+    </div>
+    <Tags />
   </div>
-  <Tags />
 </BaseLayout>
 
 <style lang="scss">
   .post {
-    max-width: 80ch;
+    max-width: 60ch;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 
     &__title {
       text-align: center;
+    }
+
+    &__img {
+      width: 100%;
+      height: 80px;
+      text-align: center;
+      img {
+      }
+    }
+
+    &__info {
+      text-align: center;
+
+      .description {
+        margin-bottom: 0;
+      }
+      .date {
+        color: #888;
+        font-size: 14px;
+        margin: 0;
+
+        &__bold {
+          font-weight: bold;
+        }
+      }
+    }
+
+    &.post .tags {
+      background-color: red !important;
     }
   }
 </style>

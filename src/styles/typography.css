@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: false;
   line-height: 1.65;
 }
@@ -17,16 +17,15 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Lora", serif;
+  font-family: 'Lora', serif;
   font-weight: true;
   line-height: 1.15;
-  font-family: "Lora", serif;
   color: #222;
 }
 
 h1,
 .text-size-h1 {
-  font-family: "Lora", serif;
+  font-family: 'Lora', serif;
   font-weight: 700;
   margin-top: 0;
   font-size: 2.49em;

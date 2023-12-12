@@ -1,9 +1,6 @@
 <nav class="nav-links" aria-label="site navigation">
-  <a href="/about" class="nav-links__link" data-astro-prefetch>About Me</a>
-  <a href="/blog" class="nav-links__link blog-link" data-astro-prefetch>Blog</a>
-  <a href="/blog" class="nav-links__link contacts-link" data-astro-prefetch
-    >Contacts</a
-  >
+  <a href="/blog" class="nav-links__link blog-link">Blog</a>
+  <a href="/blog" class="nav-links__link contacts-link">Contacts</a>
 </nav>
 
 <style lang="scss">
@@ -25,14 +22,8 @@
       }
     }
     .contacts-link {
-      border: 1px solid var(--clr-accent);
-      font-weight: normal;
-      color: var(--clr-accent);
-
-      &:hover {
-        background-color: var(--clr-accent);
-        color: #fff;
-      }
+      background-color: var(--clr-accent);
+      color: #fff;
     }
   }
 

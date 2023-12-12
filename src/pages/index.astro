@@ -1,9 +1,109 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import heroImage from "../assets/code-typing-bro.png";
 
 const pageTitle = "Home Page";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1>Home page</h1>
+  <section aria-label="hero section" class="hero">
+    <div class="hero__box--left glass">
+      <p class="small">Hi, my name is Bobby, I'm</p>
+      <h1 class="title">FRONT END ENGINEER</h1>
+      <p class="small">based in Sofia, Bulgaria</p>
+      <a href="/about" class="cta-btn">my story</a>
+    </div>
+    <div class="hero__image">
+      <Image
+        src={heroImage}
+        width={500}
+        alt="code typing"
+        format="avif"
+        quality="mid"
+      />
+    </div>
+  </section>
+  <div class="about">
+    <section class="about__busy">
+      <h4>What keeps me busy ?</h4>
+    </section>
+    <section class="about__me">
+      <h4>Who am I ?</h4>
+    </section>
+  </div>
 </BaseLayout>
+
+<style lang="scss">
+  .hero {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+
+    &__box--left {
+      padding: 1rem;
+      width: 100%;
+
+      .small {
+        margin: 0;
+        font-weight: 700;
+        margin-block: 0.5rem;
+      }
+
+      .title {
+        margin: 0;
+        font-size: 3rem;
+        font-weight: 400;
+        letter-spacing: -1px;
+        line-height: 1;
+        background: #3a6ea5;
+        background: linear-gradient(to right, #3a6ea5 20%, #ff6700 80%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .cta-btn {
+        display: inline-block;
+        text-decoration: none;
+        padding: 0.5rem 2rem;
+        margin-top: 1rem;
+        background-color: var(--clr-accent);
+        border-radius: 100px;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+
+        // add some hover effects on the story btn
+      }
+    }
+
+    &__image {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 636px) {
+    .hero {
+      padding: 0;
+      flex-direction: row;
+      padding-block: 2rem;
+
+      &__box--left {
+        width: 50%;
+
+        .title {
+          font-size: 5rem;
+        }
+      }
+
+      &__image {
+        display: block;
+        width: 50%;
+      }
+    }
+  }
+</style>
