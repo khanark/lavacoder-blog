@@ -1,15 +1,15 @@
 html {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  font-weight: false;
-  line-height: 1.65;
+    font-family: 'Poppins', sans-serif;
+    font-weight: false;
+    line-height: 1.65;
 }
 
 p {
-  font-size: 1em;
+    font-size: 1em;
 }
 
 h1,
@@ -17,46 +17,46 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Lora', serif;
-  font-weight: true;
-  line-height: 1.15;
-  color: #222;
+    font-family: 'Lora', serif;
+    font-weight: true;
+    line-height: 1.15;
+    color: #222;
 }
 
 h1,
 .text-size-h1 {
-  font-family: 'Lora', serif;
-  font-weight: 700;
-  margin-top: 0;
-  font-size: 2.49em;
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    margin-top: 0;
+    font-size: 2.49em;
 }
 
 h2,
 .text-size-h2 {
-  font-size: 2.07em;
+    font-size: 2.07em;
 }
 
 h3,
 .text-size-h3 {
-  font-size: 1.73em;
+    font-size: 1.73em;
 }
 
 h4,
 .text-size-h4 {
-  font-size: 1.44em;
+    font-size: 1.44em;
 }
 
 h5,
 .text-size-h5 {
-  font-size: 1.2em;
+    font-size: 1.2em;
 }
 
 .text-caption {
-  font-size: 0.83em;
-  color: #444;
+    font-size: 0.83em;
+    color: #444;
 }
 
 small,
 .text-small {
-  font-size: 0.69em;
+    font-size: 0.69em;
 }

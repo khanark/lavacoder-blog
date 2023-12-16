@@ -9,6 +9,7 @@ import jsIcon from '../assets/JavaScript.png';
 import reactIcon from '../assets/React.png';
 import nodeIcon from '../assets/Node.js.png';
 import astroIcon from '../assets/Astro.png';
+import BlogPost from '../components/BlogPost.astro';
 
 const pageTitle = 'Home Page';
 
@@ -25,6 +26,15 @@ const interestList = [
     'music (lofi / hip hop)',
     'late night walks',
 ];
+
+const allPosts = await Astro.glob('../pages/blog/*.md');
+const sortedPosts = allPosts
+    .sort((a, b) => {
+        return (
+            new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+        );
+    })
+    .slice(0, 3);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -50,7 +60,10 @@ const interestList = [
             </div>
         </article>
         <article class="glass">
-            <h4>Who am I ? 🤝</h4>
+            <h4>My latest posts 🆕</h4>
+            <ul class="list post-list">
+                {sortedPosts.map((post) => <BlogPost url={post.url} {...post.frontmatter} />)}
+            </ul>
         </article>
     </div>
 </BaseLayout>
@@ -103,8 +116,6 @@ const interestList = [
                 color: #fff;
                 font-weight: 600;
                 font-size: 1.2rem;
-
-                // add some hover effects on the story btn
             }
         }
 
@@ -142,6 +153,12 @@ const interestList = [
                 padding-top: 2rem;
                 padding-inline: 2rem;
                 font-weight: 500;
+            }
+
+            .post-list {
+                flex-direction: column;
+                font-weight: normal;
+                padding: 0;
             }
 
             .list::after {
