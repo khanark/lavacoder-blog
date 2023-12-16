@@ -2,108 +2,190 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import heroImage from '../assets/code-typing-bro.png';
+import Technology from '../components/Technology.astro';
+
+// tech icons
+import jsIcon from '../assets/JavaScript.png';
+import reactIcon from '../assets/React.png';
+import nodeIcon from '../assets/Node.js.png';
+import astroIcon from '../assets/Astro.png';
 
 const pageTitle = 'Home Page';
+
+const techList = [
+    { icon: jsIcon, name: 'JavaScript', alt: 'javascript icon' },
+    { icon: nodeIcon, name: 'NodeJS', alt: 'node icon' },
+    { icon: reactIcon, name: 'React', alt: 'react icon' },
+    { icon: astroIcon, name: 'Astro', alt: 'astro icon' },
+];
+
+const interestList = [
+    'reading books',
+    ' watching movies',
+    'music (lofi / hip hop)',
+    'late night walks',
+];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <section aria-label="hero section" class="hero">
-    <div class="hero__box--left glass">
-      <p class="small">Hi, my name is Bobby, I'm</p>
-      <h1 class="title">FRONT END ENGINEER</h1>
-      <p class="small">based in Sofia, Bulgaria</p>
-      <a href="/about" class="cta-btn">my story</a>
-    </div>
-    <div class="hero__image">
-      <Image
-        src={heroImage}
-        width={500}
-        alt="code typing"
-        format="avif"
-        quality="mid"
-      />
-    </div>
-  </section>
-  <div class="about">
-    <section class="about__busy">
-      <h4>What keeps me busy ?</h4>
+    <section aria-label="hero section" class="hero">
+        <div class="hero__box--left">
+            <p class="small">Hi, my name is <span class="name">Bobby</span>, I'm</p>
+            <h1 class="title">FRONT END ENGINEER</h1>
+            <p class="small">based in <span class="based">Sofia, Bulgaria</span></p>
+            <a href="/blog" class="cta-btn">My blog</a>
+        </div>
+        <div class="hero__image">
+            <Image src={heroImage} width={500} alt="code typing" format="avif" quality="mid" />
+        </div>
     </section>
-    <section class="about__me">
-      <h4>Who am I ?</h4>
-    </section>
-  </div>
+    <div class="hero__about">
+        <article class="about__techs glass">
+            <h4>What keeps me busy ? 👨‍💻</h4>
+            <div class="lists">
+                <ul class="list tech-list">{techList.map((tech) => <Technology {...tech} />)}</ul>
+                <ul class="list interest-list">
+                    {interestList.map((interest) => <li class="interest-item">{interest}</li>)}
+                </ul>
+            </div>
+        </article>
+        <article class="glass">
+            <h4>Who am I ? 🤝</h4>
+        </article>
+    </div>
 </BaseLayout>
 
 <style lang="scss">
-  .hero {
-    margin-top: 2rem;
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
-    align-items: center;
-
-    &__box--left {
-      padding: 1rem;
-      width: 100%;
-
-      .small {
-        margin: 0;
-        font-weight: 700;
-        margin-block: 0.5rem;
-      }
-
-      .title {
-        margin: 0;
-        font-size: 3rem;
-        font-weight: 400;
-        letter-spacing: -1px;
-        line-height: 1;
-        background: #3a6ea5;
-        background: linear-gradient(to right, #3a6ea5 20%, #ff6700 80%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .cta-btn {
-        display: inline-block;
-        text-decoration: none;
-        padding: 0.5rem 2rem;
-        margin-top: 1rem;
-        background-color: var(--clr-accent);
-        border-radius: 100px;
-        color: #fff;
-        font-weight: 600;
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-
-        // add some hover effects on the story btn
-      }
-    }
-
-    &__image {
-      display: none;
-    }
-  }
-
-  @media screen and (min-width: 636px) {
     .hero {
-      padding: 0;
-      flex-direction: row;
-      padding-block: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex;
+        gap: 2rem;
+        flex-direction: column;
+        align-items: center;
 
-      &__box--left {
-        width: 50%;
+        &__box--left {
+            padding-left: 1rem;
+            width: 100%;
 
-        .title {
-          font-size: 5rem;
+            .name,
+            .based {
+                text-decoration: underline;
+                text-underline-offset: 4px;
+                color: var(--clr-secondary);
+            }
+
+            .small {
+                margin: 0;
+                font-weight: 700;
+                margin-block: 0.5rem;
+            }
+
+            .title {
+                margin: 0;
+                font-size: 3rem;
+                font-weight: 400;
+                letter-spacing: -1px;
+                line-height: 1;
+                background: #3a6ea5;
+                background: linear-gradient(to right, #3a6ea5 20%, #ff6700 80%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .cta-btn {
+                display: inline-block;
+                text-decoration: none;
+                padding: 0.5rem 2rem;
+                margin-top: 1.5rem;
+                background-color: var(--clr-accent);
+                border-radius: 100px;
+                color: #fff;
+                font-weight: 600;
+                font-size: 1.2rem;
+
+                // add some hover effects on the story btn
+            }
         }
-      }
 
-      &__image {
-        display: block;
-        width: 50%;
-      }
+        &__image {
+            display: none;
+        }
+
+        &__about {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+
+            h4 {
+                margin-top: 0;
+            }
+
+            &__techs {
+                width: 40%;
+                display: flex;
+                gap: 1rem;
+            }
+
+            .lists {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .list {
+                position: relative;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                padding-top: 2rem;
+                padding-inline: 2rem;
+                font-weight: 500;
+            }
+
+            .list::after {
+                position: absolute;
+                color: var(--clr-secondary);
+                font-weight: 500;
+                top: 0;
+                left: 0;
+                margin-left: 2rem;
+            }
+
+            .list.tech-list::after {
+                content: 'Technologies:';
+            }
+
+            .list.interest-list::after {
+                content: 'Interests:';
+            }
+
+            .interest-item {
+                padding: 0.5rem 0.75rem;
+                border: 1px solid var(--clr-tertiary);
+            }
+        }
     }
-  }
+
+    @media screen and (min-width: 636px) {
+        .hero {
+            padding: 0;
+            flex-direction: row;
+            padding-bot: 2rem;
+
+            &__box--left {
+                width: 50%;
+
+                .title {
+                    font-size: 5rem;
+                }
+            }
+
+            &__image {
+                display: block;
+                width: 50%;
+            }
+        }
+    }
 </style>

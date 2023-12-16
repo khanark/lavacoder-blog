@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+const { name, icon, alt } = Astro.props;
+---
+
+<li class="item">
+    <Image src={icon} width={28} height={28} format="avif" quality="mid" alt={alt} />
+    <span>{name}</span>
+</li>
+
+<style lang="scss">
+    .item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--clr-tertiary);
+        border-radius: 100px;
+    }
+</style>

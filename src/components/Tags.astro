@@ -1,61 +1,46 @@
 ---
-const allPosts = await Astro.glob("../pages/blog/*.md");
+const allPosts = await Astro.glob('../pages/blog/*.md');
 const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 ---
 
 <div class="tags">
-  <h5 class="tags__title">Articles by topics</h5>
-  <div class="tags__list">
-    {
-      tags.map((tag) => (
-        <a class="tag" href={`/tags/${tag}`}>
-          {tag}
-        </a>
-      ))
-    }
-  </div>
+    <h5 class="tags__title">Articles by topics</h5>
+    <div class="tags__list">
+        {
+            tags.map((tag) => (
+                <a class="tag" href={`/tags/${tag}`}>
+                    {tag}
+                </a>
+            ))
+        }
+    </div>
 </div>
 
 <style lang="scss">
-  .tags {
-    grid-row: 3;
-    background: linear-gradient(to bottom, #f2f2f2, transparent);
-    padding: 1rem;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    .tags {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
 
-    &__title {
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
-
-    &__list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-
-      .tag {
-        text-decoration: none;
-        padding: 0.25rem 0.75rem;
-        color: var(--clr-primary);
-        border: 1px solid var(--clr-primary);
-        border-radius: 100px;
-        transition: all 0.2s;
-
-        &:hover {
-          background-color: var(--clr-secondary);
-          color: #fff;
+        &__title {
+            margin-top: 0;
+            margin-bottom: 1rem;
         }
-      }
-    }
 
-    @media screen and (min-width: 636px) {
-      grid-row: auto;
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        @media screen and (min-width: 636px) {
+            width: 35%;
+        }
     }
-  }
 </style>
